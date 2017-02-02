@@ -1,0 +1,8 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+auth_token.R
+*.csv
+*.xml
+*.zip
