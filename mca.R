@@ -64,6 +64,11 @@ fviz_gda_quali_supvar(mca_res, datensatz_synthesise_users_gda, "average_visit_ho
 fviz_gda_quali_ellipses(mca_res, datensatz_synthesise_users_gda, "average_visit_devices", impute = FALSE)
 fviz_gda_quali_supvar(mca_res, datensatz_synthesise_users_gda, "average_visit_devices", impute = FALSE)
 
+# HCPC
+
+hcpc_res <- HCPC(mca_res, nb.clust = 3, graph = FALSE)
+
+fviz_gda_quali_ellipses(mca_res, hcpc_res$data.clust, "clust", title = "Learning Analytics — e:t:p:M@Math — Cluster")
 
 # In Repository speichern
 rmFromLocalRepo(names(asearch("name:mca_res")), removeData = TRUE, removeMiniature = TRUE)
