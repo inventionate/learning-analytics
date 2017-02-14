@@ -1,0 +1,91 @@
+# A tibble: 6 × 99
+  idSite idVisit visitIp        visitorId
+   <int>   <int>   <dbl>            <chr>
+1      1   17035  828300 13c7cc0c211d5f87
+2      1   17034  785300 8ad311747e4f5df3
+3      1   17033   46500 221f1990e2549b1c
+4      1   17032  785300 56bcbeea65016a0a
+5      1   17031  785300 f0c1cc890459fff0
+6      1   17030  134300 f25b097f8520ffdf
+# ... with 95 more variables:
+#   goalConversions <int>,
+#   siteCurrency <chr>,
+#   siteCurrencySymbol <chr>,
+#   serverDate <date>,
+#   visitServerHour <int>,
+#   lastActionTimestamp <int>,
+#   lastActionDateTime <dttm>,
+#   userId <chr>, visitorType <chr>,
+#   visitorTypeIcon <chr>,
+#   visitConverted <int>,
+#   visitConvertedIcon <chr>,
+#   visitCount <int>,
+#   firstActionTimestamp <int>,
+#   visitEcommerceStatus <chr>,
+#   visitEcommerceStatusIcon <chr>,
+#   daysSinceFirstVisit <int>,
+#   daysSinceLastEcommerceOrder <int>,
+#   visitDuration <int>,
+#   visitDurationPretty <chr>,
+#   searches <int>, actions <int>,
+#   interactions <int>, referrerType <chr>,
+#   referrerTypeName <chr>,
+#   referrerName <chr>,
+#   referrerKeyword <chr>,
+#   referrerKeywordPosition <chr>,
+#   referrerUrl <chr>,
+#   referrerSearchEngineUrl <chr>,
+#   referrerSearchEngineIcon <chr>,
+#   languageCode <chr>, language <chr>,
+#   deviceType <chr>, deviceTypeIcon <chr>,
+#   deviceBrand <chr>, deviceModel <chr>,
+#   operatingSystem <chr>,
+#   operatingSystemName <chr>,
+#   operatingSystemIcon <chr>,
+#   operatingSystemCode <chr>,
+#   operatingSystemVersion <chr>,
+#   browserFamily <chr>,
+#   browserFamilyDescription <chr>,
+#   browser <chr>, browserName <chr>,
+#   browserIcon <chr>, browserCode <chr>,
+#   browserVersion <dbl>, events <int>,
+#   continent <chr>, continentCode <chr>,
+#   country <chr>, countryCode <chr>,
+#   countryFlag <chr>, region <chr>,
+#   regionCode <int>, city <chr>,
+#   location <chr>, latitude <dbl>,
+#   longitude <dbl>, visitLocalTime <time>,
+#   visitLocalHour <int>,
+#   daysSinceLastVisit <int>,
+#   resolution <chr>, plugins <chr>,
+#   `pluginIcon (pluginsIcons 0)` <chr>,
+#   `pluginName (pluginsIcons 0)` <chr>,
+#   `pluginIcon (pluginsIcons 1)` <chr>,
+#   `pluginName (pluginsIcons 1)` <chr>,
+#   `pluginIcon (pluginsIcons 2)` <chr>,
+#   `pluginName (pluginsIcons 2)` <chr>,
+#   `pluginIcon (pluginsIcons 3)` <chr>,
+#   `pluginName (pluginsIcons 3)` <chr>,
+#   provider <chr>, providerName <chr>,
+#   providerUrl <chr>,
+#   serverTimestamp <int>,
+#   serverTimePretty <time>,
+#   serverDatePretty <chr>,
+#   serverDatePrettyFirstAction <chr>,
+#   serverTimePrettyFirstAction <time>,
+#   pluginsIcons <chr>, `pluginIcon
+#   (pluginsIcons 4)` <chr>, `pluginName
+#   (pluginsIcons 4)` <chr>,
+#   `customVariableName3 (customVariables
+#   3)` <chr>, `customVariableValue3
+#   (customVariables 3)` <chr>,
+#   `customVariableName1 (customVariables
+#   1)` <chr>, `customVariableValue1
+#   (customVariables 1)` <chr>, `pluginIcon
+#   (pluginsIcons 5)` <chr>, `pluginName
+#   (pluginsIcons 5)` <chr>, `pluginIcon
+#   (pluginsIcons 6)` <chr>, `pluginName
+#   (pluginsIcons 6)` <chr>,
+#   `customVariableName2 (customVariables
+#   2)` <chr>, `customVariableValue2
+#   (customVariables 2)` <chr>

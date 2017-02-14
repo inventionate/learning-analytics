@@ -1,0 +1,21 @@
+---
+title: "Untitled"
+author: "Mutfried Hartmann, Thomas Borys, Fabian Mundt"
+date: "3 2 2017"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+We perform a Multiple Correspondence Analysis on the data set, which means in general that we analyse two clouds of points. On the one hand the cloud of individuals, on the other hand the cloud of modalities.
+
+The distance between two individuals is determined by their responses to the questions (variables) to which they give different answers (modalities or categories). If for question $q$, individual $i$ chooses modality $k$ and individual $i'$ a modality $k'$ different from $k$; then letting $n_{k}$ and $n_{k'}$ be the numbers of individuals who have chosen $k$ and $k'$, respectively, the part of distance between $i$ and $i'$ due to question $q$ is defined by $d_{q}^{2}(i;i')=\frac{1}{f_{k}}+\frac{1}{f_{k'}}$ (where $f_{k}=\frac{n_{k}}{n}$ and $f_{k'}=\frac{n_{k'}}{n}$).
+
+The overall distance $d(i,i')$ between $i$ and $i'$ is then defined by
+$d^{2}(i,i')=\frac{1}{Q}\sum_{q \in Q}d^{2}_{q}(i,i')$.
+The distances between individuals determine the _cloud of individuals_, consisting of $n$ points in a space with (at most) $K-Q$ (overall number of modalities $-$ number of questions) dimensions.
+The _cloud of modalities_ follows; if $n_{kk'}$ denotes the number of individuals who have chosen both $k$ and $k'$, the distance $d(k,k')$ is defined by $d^{2}(k,k') = \frac{n_{k}+ n_{k'} - 2n_{kk'}}{n_{k}n_{k'}/n}$
+(number of individuals who have chosen $k$ or $k'$ but not both, divided by the familiar theoretical frequency).
+
+_Both clouds have the same number of dimensions and the same overall variance._

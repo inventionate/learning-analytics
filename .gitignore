@@ -6,3 +6,5 @@ auth_token.R
 *.csv
 *.xml
 *.zip
+*.pdf
+*.png
