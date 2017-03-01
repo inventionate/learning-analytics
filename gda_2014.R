@@ -3,6 +3,7 @@ pacman::p_load(TimeSpaceAnalysis)
 
 # Repository laden
 source("repository.R")
+source("survey_951135_R_syntax_file.R")
 
 # Datensatz laden
 loadFromLocalRepo(names(asearch("name:datensatz_synthesise_users_2014")))
@@ -214,7 +215,9 @@ fviz_mca_ind(res_mca)
 
 fviz_mca_var(res_mca)
 
-fviz_mca_var(res_mca, choice = "quanti.sup", repel = TRUE)# + xlim(-0.25,0.25) + ylim(-0.25,0.25)
+fviz_gda_conc_ellipse(res_mca)
+
+fviz_mca_var(res_mca, choice = "quanti.sup", repel = TRUE) + xlim(-0.25,0.25) + ylim(-0.25,0.25)
 
 res_hcpc_mca <- HCPC(res_mca, nb.clust = 3, graph = FALSE)
 
