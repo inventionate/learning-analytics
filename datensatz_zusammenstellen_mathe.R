@@ -5,7 +5,7 @@ pacman::p_load(TimeSpaceAnalysis)
 source("repository.R")
 
 # Daten laden
-loadFromLocalRepo(names(asearch("name:benutzer_mathe")))
+loadFromLocalRepo(names(asearch("name:benutzer_2016_mathe")))
 
 # Datensatz zusammenstellen
 # Geplante Struktur
@@ -22,29 +22,29 @@ loadFromLocalRepo(names(asearch("name:benutzer_mathe")))
 
 frequently_visit_day <- frequently_visit_hour <- average_visit_duration <- frequently_visit_devices <- frequently_visit_city <- average_visit_events <-visit_event_action_notes <- visit_event_action_videos <- visit_video_event_actions_pause <- visit_video_event_actions_jump <- visit_video_event_actions_cuepoint <- visit_video_event_actions_play <- visit_video_event_actions_speed <- total_visit_duration <- total_visits <- total_actions <- total_events <- NULL
 
-for( user in seq_along(benutzer_mathe) ) {
+for( user in seq_along(benutzer_2016_mathe) ) {
   
   visit_days <- NULL
-  for(i in 1:benutzer_mathe[[user]]$totalVisits) {
+  for(i in 1:benutzer_2016_mathe[[user]]$totalVisits) {
     
-    visit_days <- c(visit_days, as.character(lubridate::wday(lubridate::as_date(benutzer_mathe[[user]]$lastVisits[[i]]$serverDate), label = TRUE, abbr = FALSE)))
+    visit_days <- c(visit_days, as.character(lubridate::wday(lubridate::as_date(benutzer_2016_mathe[[user]]$lastVisits[[i]]$serverDate), label = TRUE, abbr = FALSE)))
     
   }
   frequently_visit_day <- c(frequently_visit_day, names(which.max(table(visit_days))))
   
   visit_hours <- NULL
-  for(i in 1:benutzer_mathe[[user]]$totalVisits) {
+  for(i in 1:benutzer_2016_mathe[[user]]$totalVisits) {
     
-    visit_hours <- c(visit_hours, as.numeric(benutzer_mathe[[user]]$lastVisits[[i]]$visitServerHour))
+    visit_hours <- c(visit_hours, as.numeric(benutzer_2016_mathe[[user]]$lastVisits[[i]]$visitServerHour))
     
     
   }
   frequently_visit_hour <- c(frequently_visit_hour, round(mean(visit_hours), 0))
   
   visit_durations <- NULL
-  for(i in 1:benutzer_mathe[[user]]$totalVisits) {
+  for(i in 1:benutzer_2016_mathe[[user]]$totalVisits) {
     
-    visit_durations <- c(visit_durations, lubridate::duration(as.numeric(benutzer_mathe[[user]]$lastVisits[[i]]$visitDuration, "seconds")))
+    visit_durations <- c(visit_durations, lubridate::duration(as.numeric(benutzer_2016_mathe[[user]]$lastVisits[[i]]$visitDuration, "seconds")))
     
   }
   
@@ -52,19 +52,19 @@ for( user in seq_along(benutzer_mathe) ) {
   
   
   visit_devices <- NULL
-  for(i in 1:benutzer_mathe[[user]]$totalVisits) {
+  for(i in 1:benutzer_2016_mathe[[user]]$totalVisits) {
     
-    visit_devices <- c(visit_devices, benutzer_mathe[[user]]$lastVisits[[i]]$deviceType)
+    visit_devices <- c(visit_devices, benutzer_2016_mathe[[user]]$lastVisits[[i]]$deviceType)
     
   }
   frequently_visit_devices <- c(frequently_visit_devices, names(which.max(table(visit_devices))))
   
   
   visit_cities <- NULL
-  for(i in 1:benutzer_mathe[[user]]$totalVisits) {
+  for(i in 1:benutzer_2016_mathe[[user]]$totalVisits) {
     
-    if ( is.null(benutzer_mathe[[user]]$lastVisits[[i]]$city) ) city <- NA
-    else city <- benutzer_mathe[[user]]$lastVisits[[i]]$city
+    if ( is.null(benutzer_2016_mathe[[user]]$lastVisits[[i]]$city) ) city <- NA
+    else city <- benutzer_2016_mathe[[user]]$lastVisits[[i]]$city
     
     visit_cities <- c(visit_cities, city)
     
@@ -77,9 +77,9 @@ for( user in seq_along(benutzer_mathe) ) {
   
   
   visit_events <- NULL
-  for(i in 1:benutzer_mathe[[user]]$totalVisits) {
+  for(i in 1:benutzer_2016_mathe[[user]]$totalVisits) {
     
-    visit_events <- c(visit_events, benutzer_mathe[[user]]$lastVisits[[i]]$events)
+    visit_events <- c(visit_events, benutzer_2016_mathe[[user]]$lastVisits[[i]]$events)
     
   }
   average_visit_events <- c(average_visit_events, round(mean(as.numeric(visit_events)), 0))
@@ -87,13 +87,13 @@ for( user in seq_along(benutzer_mathe) ) {
   # Allgemeine Events
   visit_event_actions <- NULL
   t <- 0
-  for(i in 1:benutzer_mathe[[user]]$totalVisits) {
+  for(i in 1:benutzer_2016_mathe[[user]]$totalVisits) {
     
-    t <- t + length(benutzer_mathe[[user]]$lastVisits[[i]]$actionDetails)
+    t <- t + length(benutzer_2016_mathe[[user]]$lastVisits[[i]]$actionDetails)
     
-    for(e in seq_along(benutzer_mathe[[user]]$lastVisits[[i]]$actionDetails) ) {
+    for(e in seq_along(benutzer_2016_mathe[[user]]$lastVisits[[i]]$actionDetails) ) {
       
-      visit_event_actions <- c(visit_event_actions, benutzer_mathe[[user]]$lastVisits[[i]]$actionDetails[[e]]$eventCategory)
+      visit_event_actions <- c(visit_event_actions, benutzer_2016_mathe[[user]]$lastVisits[[i]]$actionDetails[[e]]$eventCategory)
       
     }
     
@@ -109,13 +109,13 @@ for( user in seq_along(benutzer_mathe) ) {
   # Video events
   visit_video_event_actions <- NULL
   t <- 0
-  for(i in 1:benutzer_mathe[[user]]$totalVisits) {
+  for(i in 1:benutzer_2016_mathe[[user]]$totalVisits) {
     
-    t <- t + length(benutzer_mathe[[user]]$lastVisits[[i]]$actionDetails)
+    t <- t + length(benutzer_2016_mathe[[user]]$lastVisits[[i]]$actionDetails)
     
-    for(e in seq_along(benutzer_mathe[[user]]$lastVisits[[i]]$actionDetails) ) {
+    for(e in seq_along(benutzer_2016_mathe[[user]]$lastVisits[[i]]$actionDetails) ) {
       
-      visit_video_event_actions <- c(visit_video_event_actions, benutzer_mathe[[user]]$lastVisits[[i]]$actionDetails[[e]]$eventAction)
+      visit_video_event_actions <- c(visit_video_event_actions, benutzer_2016_mathe[[user]]$lastVisits[[i]]$actionDetails[[e]]$eventAction)
       
     }
     
@@ -138,18 +138,18 @@ for( user in seq_along(benutzer_mathe) ) {
   if( is.null(visit_video_event_actions$`Geschwindigkeit verändert`) ) visit_video_event_actions_speed <- c(visit_video_event_actions_speed, NA)
   else visit_video_event_actions_speed <- c(visit_video_event_actions_speed, visit_video_event_actions$`Geschwindigkeit verändert`)
   
-  total_visit_duration <- c(total_visit_duration, lubridate::duration(as.numeric(benutzer_mathe[[user]]$totalVisitDuration), "seconds"))
+  total_visit_duration <- c(total_visit_duration, lubridate::duration(as.numeric(benutzer_2016_mathe[[user]]$totalVisitDuration), "seconds"))
   
-  total_visits <- c(total_visits, benutzer_mathe[[user]]$totalVisits)
+  total_visits <- c(total_visits, benutzer_2016_mathe[[user]]$totalVisits)
   
-  total_actions <- c(total_actions, benutzer_mathe[[user]]$totalActions)
+  total_actions <- c(total_actions, benutzer_2016_mathe[[user]]$totalActions)
   
-  total_events <- c(total_events, benutzer_mathe[[user]]$totalEvents)
+  total_events <- c(total_events, benutzer_2016_mathe[[user]]$totalEvents)
   
 }
 
 # Data frame basteln
-datensatz_synthesise_users <- data_frame(
+datensatz_synthesise_users_mathe <- data_frame(
   
   total_visit_duration = total_visit_duration,
   

@@ -54,7 +54,7 @@ benutzer_id %>%
 # @INFO Achtung, sehr zeitintensiv!
 
 ## Mathe
-benutzer_mathe <- paste0("benutzer_", benutzer_id, ".xml") %>% 
+benutzer_2016_mathe <- paste0("benutzer_", benutzer_id, ".xml") %>% 
   map(function(name) xmlToList(xmlParse( name )) )
 
 ## Alle 2014
@@ -62,13 +62,13 @@ benutzer_2014 <- paste0("benutzer_", benutzer_id, ".xml") %>%
   map(function(name) xmlToList(xmlParse( name )) )
 
 # Fake Nutzer
-benutzer_mathe <- benutzer_mathe[-23]
+benutzer_2016_mathe <- benutzer_2016_mathe[-23]
 
 # In Repository speichern
 
 ## Mathe
-rmFromLocalRepo(names(asearch("name:benutzer_mathe")), removeData = TRUE, removeMiniature = TRUE)
-asave(benutzer_mathe, archiveSessionInfo = FALSE)
+rmFromLocalRepo(names(asearch("name:benutzer_2016_mathe")), removeData = TRUE, removeMiniature = TRUE)
+asave(benutzer_2016_mathe, archiveSessionInfo = FALSE)
 
 ## Alle 2014
 rmFromLocalRepo(names(asearch("name:benutzer_2014")), removeData = TRUE, removeMiniature = TRUE)

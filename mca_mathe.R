@@ -80,7 +80,7 @@ ggplot(coord_ind, aes(x, y)) +
   # scale_size(range = c(min(coord_ind$count), max(max(coord_ind$count)))) +
   scale_alpha(range = c(0.5, 1)) +
   geom_density_2d(colour = "gray") +
-  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varainz."))# + xlim(-1.8, 1.3) + ylim(-1.1, 1.6)
+  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varianz."))# + xlim(-1.8, 1.3) + ylim(-1.1, 1.6)
 ggsave("1 Individuen.pdf", width = 11, height = 8)
 
 ## Nur eine Variable
@@ -93,7 +93,7 @@ ggplot(mca_res$var$coord %>% data.frame %>% rownames_to_column %>% separate(rown
   geom_text_repel(aes(label = rowname), point.padding = unit(0.25, "lines")) +
   geom_point(data = coord_ind, aes(x, y, alpha = count), show.legend = FALSE) +
   scale_alpha(range = c(0.4, 0.9)) +
-  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varainz.")) + xlim(-1.8, 1.3) + ylim(-1.1, 1.6)
+  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varianz.")) + xlim(-1.8, 1.3) + ylim(-1.1, 1.6)
 ggsave("2 Ebene 1.pdf", width = 11, height = 8)
 
 ## Durchschnittliche Pfade nach Gruppen
@@ -125,9 +125,10 @@ daten <- mca_res$var$coord %>% data.frame %>% rownames_to_column %>% separate(ro
 ggplot(daten, aes(Dim.1, Dim.2, group = gruppen, label = var, colour = gruppen)) + 
   geom_path(linetype = "dashed", size = 1.25, show.legend = FALSE) +
   geom_point(shape = 17, size = 4, show.legend = FALSE) +
-  geom_text_repel(point.padding = unit(0.25, "lines"), show.legend = FALSE) +
+  geom_text_repel(point.padding = unit(0.25, "lines"), show.legend = FALSE, size = 7) +
   geom_point(data = mca_res$ind$coord %>% data.frame, aes(Dim.1, Dim.2), alpha = 0.3, size = 2, inherit.aes = FALSE) +
-  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varainz.")) + xlim(-1.8, 1.3) + ylim(-1.1, 1.6)
+  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varianz.")) + xlim(-1.8, 1.3) + ylim(-1.1, 1.6) +
+  theme(axis.text = element_text(size = 17), axis.title.x = element_text(size = 21))
 ggsave("Ebene Gruppen.pdf", width = 11, height = 8)
 
 
@@ -137,7 +138,7 @@ ggplot(mca_res$var$coord %>% data.frame %>% rownames_to_column %>% separate(rown
   geom_point(shape = 17, size = 4) +
   geom_text_repel(aes(label = rowname), point.padding = unit(0.25, "lines")) +
   geom_point(data = mca_res$ind$coord %>% data.frame, aes(Dim.1, Dim.2), alpha = 0.3, size = 2) +
-  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varainz.")) + xlim(-1.8, 1.3) + ylim(-1.1, 1.3)
+  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varianz.")) + xlim(-1.8, 1.3) + ylim(-1.1, 1.3)
 ggsave("3 Ebene 2.pdf", width = 11, height = 8)
 
 ## Drei Variablen
@@ -146,7 +147,7 @@ ggplot(mca_res$var$coord %>% data.frame %>% rownames_to_column %>% separate(rown
   geom_point(shape = 17, size = 4) +
   geom_text_repel(aes(label = rowname), point.padding = unit(0.25, "lines")) +
   geom_point(data = mca_res$ind$coord %>% data.frame, aes(Dim.1, Dim.2), alpha = 0.3, size = 2) +
-  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varainz.")) + xlim(-1.8, 1.3) + ylim(-1.1, 1.3)
+  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varianz.")) + xlim(-1.8, 1.3) + ylim(-1.1, 1.3)
 ggsave("4 Ebene 3.pdf", width = 11, height = 8)
 
 ## Alle Variablen
@@ -155,7 +156,7 @@ ggplot(mca_res$var$coord %>% data.frame %>% rownames_to_column %>% separate(rown
   geom_point(shape = 17, size = 4) +
   geom_text_repel(aes(label = rowname), point.padding = unit(0.25, "lines")) +
   geom_point(data = mca_res$ind$coord %>% data.frame, aes(Dim.1, Dim.2), alpha = 0.3, size = 2) +
-  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varainz.")) + xlim(-1.8, 1.3) + ylim(-1.1, 1.3)
+  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varianz.")) + xlim(-1.8, 1.3) + ylim(-1.1, 1.3)
 ggsave("5 Ebene Alle.pdf", width = 11, height = 8)
 
 ## Nur Linien
@@ -163,7 +164,7 @@ ggplot(mca_res$var$coord %>% data.frame %>% rownames_to_column %>% separate(rown
   geom_path(aes(group = var), linetype = "dashed", size = 1.25) +
   geom_point(shape = 17, size = 4) +
   geom_point(data = mca_res$ind$coord %>% data.frame, aes(Dim.1, Dim.2), alpha = 0.3, size = 2) +
-  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varainz.")) + xlim(-1.8, 1.3) + ylim(-1.1, 1.3)
+  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varianz.")) + xlim(-1.8, 1.3) + ylim(-1.1, 1.3)
 ggsave("6 Ebene Linien.pdf", width = 11, height = 8)
 
 ## Nur Kategorien
@@ -171,7 +172,7 @@ ggplot(mca_res$var$coord %>% data.frame %>% rownames_to_column %>% separate(rown
   geom_point(shape = 17, size = 4) +
   geom_text_repel(aes(label = rowname), point.padding = unit(0.25, "lines")) +
   geom_point(data = mca_res$ind$coord %>% data.frame, aes(Dim.1, Dim.2), alpha = 0.3, size = 2) +
-  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varainz.")) + xlim(-1.8, 1.3) + ylim(-1.1, 1.3)
+  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varianz.")) + xlim(-1.8, 1.3) + ylim(-1.1, 1.3)
 ggsave("7 Ebene Kategorien.pdf", width = 11, height = 8)
 
 ## Hierarchische Clusteranalyse Farbgruppen
@@ -179,7 +180,7 @@ hcpc_res <- HCPC(mca_res, nb.clust = 3, graph = FALSE)
 daten <- bind_cols(mca_res$ind$coord %>% data.frame,  hcpc_res$data.clust$clust %>% data.frame(cluster = .))
 ggplot(daten, aes(Dim.1, Dim.2, group = cluster, colour = cluster)) +
   geom_point(size = 2) +
-  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varainz.")) + xlim(-1.8, 1.2) + ylim(-1.1, 1.3)
+  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varianz.")) + xlim(-1.8, 1.2) + ylim(-1.1, 1.3)
 ggsave("8 Cluster Farben.pdf", width = 11, height = 8)
 
 ## Hierarchische Clusteranalyse Ellipsen
@@ -190,7 +191,7 @@ ggplot(daten, aes(Dim.1, Dim.2, group = cluster, colour = cluster)) +
   stat_ellipse(level = 0.86, type = "norm", show.legend = FALSE) +
   geom_point(data = daten %>% group_by(cluster) %>% select(Dim.1, Dim.2) %>% summarise_all(funs(mean)), inherit.aes = FALSE, aes(Dim.1, Dim.2, fill = cluster), shape = 23, size = 3, stroke = 2, show.legend = FALSE) +
 #  geom_label_repel(data = daten %>% group_by(cluster) %>% select(Dim.1, Dim.2) %>% summarise_all(funs(mean)), inherit.aes = FALSE, aes(Dim.1, Dim.2, colour = cluster, label = cluster), show.legend = FALSE) +
-  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varainz.")) 
+  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varianz.")) 
 ggsave("9 Cluster Ellipsen.pdf", width = 11, height = 8)
 
 ## Geräte
@@ -200,7 +201,7 @@ ggplot(daten, aes(Dim.1, Dim.2, group = devices, colour = devices)) +
   stat_ellipse(level = 0.86, type = "norm", show.legend = FALSE) +
   geom_point(data = daten %>% group_by(devices) %>% select(Dim.1, Dim.2) %>% summarise_all(funs(mean)), inherit.aes = FALSE, aes(Dim.1, Dim.2, fill = devices), shape = 23, size = 3, stroke = 2, show.legend = FALSE) +
   geom_label_repel(data = daten %>% group_by(devices) %>% select(Dim.1, Dim.2) %>% summarise_all(funs(mean)), inherit.aes = FALSE, aes(Dim.1, Dim.2, colour = devices, label = devices), show.legend = FALSE) +
-  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varainz.")) 
+  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varianz.")) 
 ggsave("10 Geräte Ellipsen.pdf", width = 11, height = 8)
 
 ## Städte 
@@ -211,7 +212,7 @@ ggplot(daten, aes(Dim.1, Dim.2, group = city, colour = city)) +
   geom_point(data = daten_invers, inherit.aes = FALSE, aes(Dim.1, Dim.2), alpha = 0.5) +
   geom_point(data = daten %>% group_by(city) %>% select(Dim.1, Dim.2) %>% summarise_all(funs(mean)), inherit.aes = FALSE, aes(Dim.1, Dim.2, fill = city), shape = 23, size = 3, stroke = 2, show.legend = FALSE) +
   geom_label_repel(data = daten %>% group_by(city) %>% select(Dim.1, Dim.2) %>% summarise_all(funs(mean)), inherit.aes = FALSE, aes(Dim.1, Dim.2, colour = city, label = city), show.legend = FALSE) +
-  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varainz.")) 
+  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varianz.")) 
 ggsave("11 Städte.pdf", width = 11, height = 8)
 
 ## Tage 
@@ -239,7 +240,7 @@ ggplot(daten, aes(Dim.1, Dim.2, group = day, colour = day)) +
   geom_point(data = daten %>% group_by(day) %>% select(Dim.1, Dim.2) %>% summarise_all(funs(mean)), inherit.aes = FALSE, aes(Dim.1, Dim.2, fill = day), shape = 23, size = 3, stroke = 2, show.legend = FALSE) +
   geom_label_repel(data = daten %>% group_by(day) %>% select(Dim.1, Dim.2) %>% summarise_all(funs(mean)), inherit.aes = FALSE, aes(Dim.1, Dim.2, colour = day, label = day), show.legend = FALSE) +
   geom_path(data = daten %>% group_by(day) %>% select(Dim.1, Dim.2) %>% summarise_all(funs(mean)), inherit.aes = FALSE, aes(Dim.1, Dim.2), linetype = "dashed", size = 1.5) +
-  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varainz.")) 
+  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varianz.")) 
 ggsave("12 Tage.pdf", width = 11, height = 8)
 
 # Zeiten
@@ -250,5 +251,5 @@ ggplot(daten, aes(Dim.1, Dim.2, group = hour, colour = hour)) +
   geom_point(data = daten %>% group_by(hour) %>% select(Dim.1, Dim.2) %>% summarise_all(funs(mean)), inherit.aes = FALSE, aes(Dim.1, Dim.2, fill = hour), shape = 23, size = 3, stroke = 2, show.legend = FALSE) +
   geom_label_repel(data = daten %>% group_by(hour) %>% select(Dim.1, Dim.2) %>% summarise_all(funs(mean)), inherit.aes = FALSE, aes(Dim.1, Dim.2, colour = hour, label = hour), show.legend = FALSE) +
   geom_path(data = daten %>% group_by(hour) %>% select(Dim.1, Dim.2) %>% summarise_all(funs(mean)), inherit.aes = FALSE, aes(Dim.1, Dim.2), linetype = "dashed", size = 1.5) +
-  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varainz.")) 
+  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varianz.")) 
 ggsave("13 Tageszeiten.pdf", width = 11, height = 8)

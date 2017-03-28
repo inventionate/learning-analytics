@@ -1,0 +1,24 @@
+# A tibble: 6 × 17
+  total_visit_duration total_visits
+                 <dbl>        <chr>
+1                72498          100
+2               140370           64
+3               105603           43
+4                59977           43
+5                80262          100
+6               104335           58
+# ... with 15 more variables:
+#   total_actions <chr>, total_events <chr>,
+#   average_visit_duration <dbl>,
+#   average_visit_events <dbl>,
+#   frequently_visit_day <chr>,
+#   frequently_visit_hour <dbl>,
+#   frequently_visit_city <chr>,
+#   frequently_visit_devices <chr>,
+#   visit_event_action_notes <int>,
+#   visit_event_action_videos <int>,
+#   visit_video_event_actions_pause <int>,
+#   visit_video_event_actions_jump <int>,
+#   visit_video_event_actions_cuepoint <int>,
+#   visit_video_event_actions_play <int>,
+#   visit_video_event_actions_speed <int>
