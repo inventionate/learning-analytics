@@ -11,15 +11,15 @@ loadFromLocalRepo(names(asearch("name:datensatz_synthesise_users_mathe")))
 datensatz_synthesise_users_gda <- datensatz_synthesise_users_mathe %>%
   transmute(
     # Gesamtzeit auf der App
-    total_visit_duration = quant.cut(round(total_visit_duration/60/60, 2), 4, labels = c("Besuchszeit: sehr kurz", "Besuchszeit: kurz", "Besuchszeit: lang", "Besuchszeit: sehr lang")),
+    total_visit_duration = quant.cut(round(total_visit_duration/60/60, 2), 4, labels = c("Besuchszeit: very short", "Besuchszeit: short", "Besuchszeit: long", "Besuchszeit: very long")),
     # Durchschnittliche Besuchszeit
-    average_visit_duration = quant.cut(as.numeric(average_visit_duration), 4, labels = c("Durchschnittliche Besuchszeit: sehr kurz", "Durchschnittliche Besuchszeit: kurz", "Durchschnittliche Besuchszeit: lang", "Durchschnittliche Besuchszeit: sehr lang")),
+    average_visit_duration = quant.cut(as.numeric(average_visit_duration), 4, labels = c("Durchschnittliche Besuchszeit: very short", "Durchschnittliche Besuchszeit: short", "Durchschnittliche Besuchszeit: long", "Durchschnittliche Besuchszeit: very long")),
     # Gesamtzahl Besuche
-    total_visits = quant.cut(as.numeric(total_visits), 4, labels = c("Gesamtbesuche: sehr wenige", "Gesamtbesuche: wenige", "Gesamtbesuche: viele", "Gesamtbesuche: sehr viele")),
+    total_visits = quant.cut(as.numeric(total_visits), 4, labels = c("Gesamtbesuche: very few", "Gesamtbesuche: few", "Gesamtbesuche: many", "Gesamtbesuche: very many")),
     # Gesamtzahl Aktionen (Klicks etc.)
-    total_actions = quant.cut(as.numeric(total_actions), 4, labels = c("Gesamtaktionen: sehr wenige", "Gesamtaktionen: wenige", "Gesamtaktionen: viele", "Gesamtaktionen: sehr viele")),
+    total_actions = quant.cut(as.numeric(total_actions), 4, labels = c("Gesamtaktionen: very few", "Gesamtaktionen: few", "Gesamtaktionen: many", "Gesamtaktionen: very many")),
     # Gesamtzahl Interaktionen (Abspielungen etc.)
-    total_events = quant.cut(as.numeric(total_actions), 4, labels = c("Gesamtevents: sehr wenige", "Gesamtevents: wenige", "Gesamtevents: viele", "Gesamtevents: sehr viele")),
+    total_events = quant.cut(as.numeric(total_actions), 4, labels = c("Gesamtevents: very few", "Gesamtevents: few", "Gesamtevents: many", "Gesamtevents: very many")),
     # Häufigster Besuchstag
     frequently_visit_day = as_factor(frequently_visit_day),
     # Häufigste Besuchsuhrzeit
@@ -29,26 +29,26 @@ datensatz_synthesise_users_gda <- datensatz_synthesise_users_mathe %>%
     # Häufigstes Besuchsgerät
     frequently_visit_devices = as_factor(frequently_visit_devices),
     # Durchschnittliche Interaktionen (Abspielungen etc.)
-    average_visit_events = quant.cut(as.numeric(average_visit_events), 4, labels = c("Durchschnittliche Events: sehr wenige", "Durchschnittliche Events: wenige", "Durchschnittliche Events: viele", "Durchschnittliche Events: sehr viele")),
+    average_visit_events = quant.cut(as.numeric(average_visit_events), 4, labels = c("Durchschnittliche Events: very few", "Durchschnittliche Events: few", "Durchschnittliche Events: many", "Durchschnittliche Events: very many")),
     # Häufigkeit Notizfunktion
-    visit_event_action_notes = quant.cut(as.numeric(visit_event_action_notes), 4, labels = c("Notizen: sehr wenige", "Notizen: wenige", "Notizen: viele", "Notizen: sehr viele")),
+    visit_event_action_notes = quant.cut(as.numeric(visit_event_action_notes), 4, labels = c("Notizen: very few", "Notizen: few", "Notizen: many", "Notizen: very many")),
     # Häufigkeit Videos allgemein
-    visit_event_action_videos = quant.cut(as.numeric(visit_event_action_videos), 4, labels = c("Videoaktivitäten: sehr wenige", "Videoaktivitäten: wenige", "Videoaktivitäten: viele", "Videoaktivitäten: sehr viele")),
+    visit_event_action_videos = quant.cut(as.numeric(visit_event_action_videos), 4, labels = c("Videoaktivitäten: very few", "Videoaktivitäten: few", "Videoaktivitäten: many", "Videoaktivitäten: very many")),
     # Häufigkeit Pause
-    visit_video_event_actions_pause = quant.cut(as.numeric(visit_video_event_actions_pause), 4, labels = c("Pausen: sehr wenige", "Pausen: wenige", "Pausen: viele", "Pausen: sehr viele")),
+    visit_video_event_actions_pause = quant.cut(as.numeric(visit_video_event_actions_pause), 4, labels = c("Pausen: very few", "Pausen: few", "Pausen: many", "Pausen: very many")),
     # Häufigkeit Springen
-    visit_video_event_actions_jump = quant.cut(as.numeric(visit_video_event_actions_jump), 4, labels = c("Sprünge: sehr wenige", "Sprünge: wenige", "Sprünge: viele", "Sprünge: sehr viele")),
+    visit_video_event_actions_jump = quant.cut(as.numeric(visit_video_event_actions_jump), 4, labels = c("Sprünge: very few", "Sprünge: few", "Sprünge: many", "Sprünge: very many")),
     # Häufigkeit Fähnchen
-    visit_video_event_actions_cuepoint = quant.cut(as.numeric(visit_video_event_actions_cuepoint), 4, labels = c("Fähnchensprünge: sehr wenige", "Fähnchensprünge: wenige", "Fähnchensprünge: viele", "Fähnchensprünge: sehr viele")),
+    visit_video_event_actions_cuepoint = quant.cut(as.numeric(visit_video_event_actions_cuepoint), 4, labels = c("Fähnchensprünge: very few", "Fähnchensprünge: few", "Fähnchensprünge: many", "Fähnchensprünge: very many")),
     # Häufigkeit Abspielen
-    visit_video_event_actions_play = quant.cut(as.numeric(visit_video_event_actions_play), 4, labels = c("Abspielungen: sehr wenige", "Abspielungen: wenige", "Abspielungen: viele", "Abspielungen: sehr viele")),
+    visit_video_event_actions_play = quant.cut(as.numeric(visit_video_event_actions_play), 4, labels = c("Abspielungen: very few", "Abspielungen: few", "Abspielungen: many", "Abspielungen: very many")),
     # Häufigkeit Geschwindigkeit
-    visit_video_event_actions_speed = quant.cut(as.numeric(visit_video_event_actions_speed), 4,  labels = c("Geschwindigkeitsveränderungen: sehr wenige", "Geschwindigkeitsveränderungen: wenige", "Geschwindigkeitsveränderungen: viele", "Geschwindigkeitsveränderungen: sehr viele"))) %>%
+    visit_video_event_actions_speed = quant.cut(as.numeric(visit_video_event_actions_speed), 4,  labels = c("Geschwindigkeitsveränderungen: very few", "Geschwindigkeitsveränderungen: few", "Geschwindigkeitsveränderungen: many", "Geschwindigkeitsveränderungen: very many"))) %>%
   mutate_all(funs(as.factor)) %>%
   data.frame
   
 # Imputation
-# Notizen ausschließen, da sehr viele NA -> passiv setzen!
+# Notizen ausschließen, da very many NA -> passiv setzen!
 datensatz_synthesise_users_gda_impute <- imputeMCA(datensatz_synthesise_users_gda[,-c(6:9, 11)])
 
 # MCA berechnen
@@ -60,7 +60,7 @@ ggsave("eigenwerte.pdf")
 
 # Gruppierung nach "total" und "durchschnittlich", "aktionen"
 group = c(2, 5, 5)
-group_names = c("Dauer", "Interaktion mit der App", "Videointeraktionen")
+group_names = c("Duration", "Web-app interactions", "Video interactions")
 
 gda_describe_group(mca_res, group, group_names)
 
@@ -106,29 +106,32 @@ daten <- mca_res$var$coord %>% data.frame %>% rownames_to_column %>% separate(ro
   bind_cols(., data.frame(gruppen = rep(rep(group_names, group), levels))) %>%
   group_by(gruppen, cat) %>% summarise_at(vars(matches("Dim.")), funs(mean)) %>%
   unite(var, gruppen, cat, sep = ":", remove = FALSE) %>% 
+  ungroup() %>%
   mutate(
-    var = as_factor(var),
-    var = fct_relevel(var, 
-                      "Dauer: sehr lang", 
-                      "Dauer: lang",
-                      "Dauer: kurz", 
-                      "Dauer: sehr kurz",
-                      "Interaktion mit der App: sehr viele",
-                      "Interaktion mit der App: viele",
-                      "Interaktion mit der App: wenige",
-                      "Interaktion mit der App: sehr wenige",
-                      "Videointeraktionen: sehr viele",
-                      "Videointeraktionen: viele",         
-                      "Videointeraktionen: wenige",
-                      "Videointeraktionen: sehr wenige")
-  ) %>% arrange(var)
-ggplot(daten, aes(Dim.1, Dim.2, group = gruppen, label = var, colour = gruppen)) + 
-  geom_path(linetype = "dashed", size = 1.25, show.legend = FALSE) +
+    var = fct_relevel(as_factor(var), 
+                      "Duration: very long", 
+                      "Duration: long",
+                      "Duration: short", 
+                      "Duration: very short",
+                      "Web-app interactions: very many",
+                      "Web-app interactions: many",
+                      "Web-app interactions: few",
+                      "Web-app interactions: very few",
+                      "Video interactions: very many",
+                      "Video interactions: many",         
+                      "Video interactions: few",
+                      "Video interactions: very few")
+  ) %>%
+  arrange(var)
+ggplot(daten, aes(Dim.1, Dim.2, group = gruppen, label = cat, colour = gruppen)) + 
+  geom_path(aes(linetype = gruppen), size = 1.25, show.legend = TRUE) +
   geom_point(shape = 17, size = 4, show.legend = FALSE) +
-  geom_text_repel(point.padding = unit(0.25, "lines"), show.legend = FALSE, size = 7) +
-  geom_point(data = mca_res$ind$coord %>% data.frame, aes(Dim.1, Dim.2), alpha = 0.3, size = 2, inherit.aes = FALSE) +
-  theme_bw() + ylab("") + xlab(paste0("Die Ebene erklärt ", modif.rate(mca_res)[2,2], "% Varianz.")) + xlim(-1.8, 1.3) + ylim(-1.1, 1.6) +
-  theme(axis.text = element_text(size = 17), axis.title.x = element_text(size = 21))
+  geom_text_repel(point.padding = unit(0.25, "lines"), show.legend = FALSE, size = 10) +
+  geom_point(data = mca_res$ind$coord %>% data.frame, aes(Dim.1, Dim.2), alpha = 0.3, size = 3, inherit.aes = FALSE) +
+  theme_bw() + ylab("") + xlab(paste0("The plane explains ", modif.rate(mca_res)[2,2], "% variance.")) + xlim(-1.8, 1.3) + ylim(-1.1, 1.6) +
+  theme(axis.text = element_text(size = 17), axis.title.x = element_text(size = 22), 
+        legend.position = "bottom", legend.title = element_blank(), legend.text = element_text(size = 17)) +
+  ylim(-1.1, 1.2)
 ggsave("Ebene Gruppen.pdf", width = 11, height = 8)
 
 
