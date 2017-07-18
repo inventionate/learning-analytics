@@ -3,7 +3,6 @@
 .RData
 .Ruserdata
 auth_token.R
-*.csv
 *.xml
 *.zip
 *.pdf
