@@ -7,3 +7,5 @@ auth_token.R
 *.zip
 *.pdf
 *.png
+visitors_2014.csv
+visitors_math.csv

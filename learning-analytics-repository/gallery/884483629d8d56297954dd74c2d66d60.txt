@@ -1,0 +1,14 @@
+# A tibble: 6 x 7
+         visitorId
+             <chr>
+1 86c4d07d438a7467
+2 e8d8ea6a08dec8bc
+3 f8a7afa08d39e06f
+4 a986a5066fb53b67
+5 c123956eee25ff4e
+6 fe0647027bdce1bb
+# ... with 6 more variables:
+#   userId <chr>, visitorType <chr>,
+#   events <int>, actions <int>,
+#   visitCount <int>,
+#   visitDuration <int>

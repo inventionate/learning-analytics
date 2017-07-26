@@ -29,12 +29,13 @@ benutzer_id <- benutzer_mathe$`Metadaten: idvisitor`
 ## Alle 2014
 benutzer <- read_csv2("visitors_2014.csv")
 
-benutzer_data <- benutzer %>% select(
+benutzer_data <- benutzer_alle <-benutzer %>% select(
   visitorId, 
   userId, 
   visitorType, 
   events, 
   actions, 
+  visitCount,
   visitDuration) %>%
   filter( !is.na(userId) )
   
@@ -73,3 +74,8 @@ asave(benutzer_2016_mathe, archiveSessionInfo = FALSE)
 ## Alle 2014
 rmFromLocalRepo(names(asearch("name:benutzer_2014")), removeData = TRUE, removeMiniature = TRUE)
 asave(benutzer_2014, archiveSessionInfo = FALSE)
+
+## Alle Nutzer Rohdaten
+rmFromLocalRepo(names(asearch("name:benutzer_alle")), removeData = TRUE, removeMiniature = TRUE)
+asave(benutzer_alle, archiveSessionInfo = FALSE)
+
