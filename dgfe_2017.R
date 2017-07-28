@@ -3,7 +3,7 @@
 # Umgabung vorbereiten
 #-----------------------------------------------------------------------#
 # Pakete laden
-pacman::p_load(TimeSpaceAnalysis)
+pacman::p_load_gh("Inventionate/TimeSpaceAnalysis")
 # Repository laden
 source("repository.R")
 source("survey_951135_R_syntax_file.R")
@@ -58,26 +58,26 @@ datensatz_limesurvey <- data %>% mutate(user_id = stringr::str_sub(refurl, start
          unabhaengigkeit_fester_termine = G4Q00001_8) %>% 
   mutate(
     eigenverantwortliches_lernen = fct_recode(eigenverantwortliches_lernen,
-                                              "Eigenverantwortliches Lernen: kaum" = "trifft überhaupt nicht zu",
-                                              "Eigenverantwortliches Lernen: kaum" = "trifft kaum zu",
-                                              "Eigenverantwortliches Lernen: teilweise" = "trifft teilweise nicht zu",
-                                              "Eigenverantwortliches Lernen: teilweise" = "trifft teilweise zu",
-                                              "Eigenverantwortliches Lernen: sehr" = "trifft weitgehend zu",
-                                              "Eigenverantwortliches Lernen: sehr" = "trifft voll zu"),
+                                              "Eigenverantwortl. Lernen: kaum" = "trifft überhaupt nicht zu",
+                                              "Eigenverantwortl. Lernen: kaum" = "trifft kaum zu",
+                                              "Eigenverantwortl. Lernen: teilweise" = "trifft teilweise nicht zu",
+                                              "Eigenverantwortl. Lernen: teilweise" = "trifft teilweise zu",
+                                              "Eigenverantwortl. Lernen: sehr" = "trifft weitgehend zu",
+                                              "Eigenverantwortl. Lernen: sehr" = "trifft voll zu"),
     dozenten = fct_recode(dozenten,
-                                              "Dozenten häufiger: kaum" = "trifft überhaupt nicht zu",
-                                              "Dozenten häufiger: kaum" = "trifft kaum zu",
-                                              "Dozenten häufiger: teilweise" = "trifft teilweise nicht zu",
-                                              "Dozenten häufiger: teilweise" = "trifft teilweise zu",
-                                              "Dozenten häufiger: sehr" = "trifft weitgehend zu",
-                                              "Dozenten häufiger: sehr" = "trifft voll zu"),
+                                              "Doz. Präsenz ausr.: kaum" = "trifft überhaupt nicht zu",
+                                              "Doz. Präsenz ausr.: kaum" = "trifft kaum zu",
+                                              "Doz. Präsenz ausr.: teilweise" = "trifft teilweise nicht zu",
+                                              "Doz. Präsenz ausr.: teilweise" = "trifft teilweise zu",
+                                              "Doz. Präsenz ausr.: sehr" = "trifft weitgehend zu",
+                                              "Doz. Präsenz ausr.: sehr" = "trifft voll zu"),
     mentoren_inhaltlich_hilfe = fct_recode(mentoren_inhaltlich_hilfe,
-                                           "Mentoren inhaltliche Hilfe: kaum" = "trifft überhaupt nicht zu",
-                                           "Mentoren inhaltliche Hilfe: kaum" = "trifft kaum zu",
-                                           "Mentoren inhaltliche Hilfe: teilweise" = "trifft teilweise nicht zu",
-                                           "Mentoren inhaltliche Hilfe: teilweise" = "trifft teilweise zu",
-                                           "Mentoren inhaltliche Hilfe: sehr" = "trifft weitgehend zu",
-                                           "Mentoren inhaltliche Hilfe: sehr" = "trifft voll zu"),
+                                           "Mentoren inhaltl. Hilfe: kaum" = "trifft überhaupt nicht zu",
+                                           "Mentoren inhaltl. Hilfe: kaum" = "trifft kaum zu",
+                                           "Mentoren inhaltl. Hilfe: teilweise" = "trifft teilweise nicht zu",
+                                           "Mentoren inhaltl. Hilfe: teilweise" = "trifft teilweise zu",
+                                           "Mentoren inhaltl. Hilfe: sehr" = "trifft weitgehend zu",
+                                           "Mentoren inhaltl. Hilfe: sehr" = "trifft voll zu"),
     mentoren_tandem = fct_recode(mentoren_tandem,
                                  "Mentoren Tandem: kaum" = "trifft überhaupt nicht zu",
                                  "Mentoren Tandem: kaum" = "trifft kaum zu",
@@ -142,33 +142,33 @@ datensatz_limesurvey <- data %>% mutate(user_id = stringr::str_sub(refurl, start
                                           "Mehr Lernzeit gewünscht: sehr" = "trifft weitgehend zu",
                                           "Mehr Lernzeit gewünscht: sehr" = "trifft voll zu"),
     online_lektionen_bevorzugt = fct_recode(online_lektionen_bevorzugt,
-                                            "online-Lektionen bevorzugt: kaum" = "trifft überhaupt nicht zu",
-                                            "online-Lektionen bevorzugt: kaum" = "trifft kaum zu",
-                                            "online-Lektionen bevorzugt: teilweise" = "trifft teilweise nicht zu",
-                                            "online-Lektionen bevorzugt: teilweise" = "trifft teilweise zu",
-                                            "online-Lektionen bevorzugt: sehr" = "trifft weitgehend zu",
-                                            "online-Lektionen bevorzugt: sehr" = "trifft voll zu"),
+                                            "oL bevorzugt: kaum" = "trifft überhaupt nicht zu",
+                                            "oL bevorzugt: kaum" = "trifft kaum zu",
+                                            "oL bevorzugt: teilweise" = "trifft teilweise nicht zu",
+                                            "oL bevorzugt: teilweise" = "trifft teilweise zu",
+                                            "oL bevorzugt: sehr" = "trifft weitgehend zu",
+                                            "oL bevorzugt: sehr" = "trifft voll zu"),
     verfuegbarkeit_vevorzugt = fct_recode(verfuegbarkeit_vevorzugt,
-                                            "Verfügbarkeit positiv: kaum" = "trifft überhaupt nicht zu",
-                                            "Verfügbarkeit positiv: kaum" = "trifft kaum zu",
-                                            "Verfügbarkeit positiv: teilweise" = "trifft teilweise nicht zu",
-                                            "Verfügbarkeit positiv: teilweise" = "trifft teilweise zu",
-                                            "Verfügbarkeit positiv: sehr" = "trifft weitgehend zu",
-                                            "Verfügbarkeit positiv: sehr" = "trifft voll zu"),
+                                            "Verfügb. positiv: kaum" = "trifft überhaupt nicht zu",
+                                            "Verfügb. positiv: kaum" = "trifft kaum zu",
+                                            "Verfügb. positiv: teilweise" = "trifft teilweise nicht zu",
+                                            "Verfügb. positiv: teilweise" = "trifft teilweise zu",
+                                            "Verfügb. positiv: sehr" = "trifft weitgehend zu",
+                                            "Verfügb. positiv: sehr" = "trifft voll zu"),
     online_lektionen_intensiver_gelernt = fct_recode(online_lektionen_intensiver_gelernt,
-                                                     "online-Lektionen mehr gelernt: kaum" = "trifft überhaupt nicht zu",
-                                                     "online-Lektionen mehr gelernt: kaum" = "trifft kaum zu",
-                                                     "online-Lektionen mehr gelernt: teilweise" = "trifft teilweise nicht zu",
-                                                     "online-Lektionen mehr gelernt: teilweise" = "trifft teilweise zu",
-                                                     "online-Lektionen mehr gelernt: sehr" = "trifft weitgehend zu",
-                                                     "online-Lektionen mehr gelernt: sehr" = "trifft voll zu"),
+                                                     "oL mehr gelernt: kaum" = "trifft überhaupt nicht zu",
+                                                     "oL mehr gelernt: kaum" = "trifft kaum zu",
+                                                     "oL mehr gelernt: teilweise" = "trifft teilweise nicht zu",
+                                                     "oL mehr gelernt: teilweise" = "trifft teilweise zu",
+                                                     "oL mehr gelernt: sehr" = "trifft weitgehend zu",
+                                                     "oL mehr gelernt: sehr" = "trifft voll zu"),
     unabhaengigkeit_fester_termine = fct_recode(unabhaengigkeit_fester_termine,
-                                          "Flexibilität positiv: kaum" = "trifft überhaupt nicht zu",
-                                          "Flexibilität positiv: kaum" = "trifft kaum zu",
-                                          "Flexibilität positiv: teilweise" = "trifft teilweise nicht zu",
-                                          "Flexibilität positiv: teilweise" = "trifft teilweise zu",
-                                          "Flexibilität positiv: sehr" = "trifft weitgehend zu",
-                                          "Flexibilität positiv: sehr" = "trifft voll zu")
+                                          "Flexibil. positiv: kaum" = "trifft überhaupt nicht zu",
+                                          "Flexibil. positiv: kaum" = "trifft kaum zu",
+                                          "Flexibil. positiv: teilweise" = "trifft teilweise nicht zu",
+                                          "Flexibil. positiv: teilweise" = "trifft teilweise zu",
+                                          "Flexibil. positiv: sehr" = "trifft weitgehend zu",
+                                          "Flexibil. positiv: sehr" = "trifft voll zu")
   ) %>% as_tibble
 datensatz_limesurvey
 
@@ -238,32 +238,47 @@ koordinaten_ind_ellipsen_anzahl <- koordinaten_ind_ellipsen %>%
   select(clust, size = Dim.1) %>% 
   group_by(clust) %>% 
   summarise_all(funs(length)) %>% 
-  mutate(size = round((100 * size) / nrow(resultat_mca$ind$coord), 0))
+  mutate(size = round((100 * size) / nrow(resultat_mca$ind$coord), 1))
 koordinaten_ind_ellipsen_mittelwert <- koordinaten_ind_ellipsen %>% 
   group_by(clust) %>% 
   summarise_all(funs(mean))
 koordinaten_ind_ellipsen_mittelwert_anzahl <- full_join(koordinaten_ind_ellipsen_mittelwert, koordinaten_ind_ellipsen_anzahl, by = "clust")
 
 # Grafiken erstellen
-plot_mca <- fviz_gda_var(resultat_mca, group = c(3, 6, 4), group_names = c("Interaktionen Web-App", "Personalisierung", "Reflexivität"), contrib = "auto", group_style = "shape", title ="") +
-  guides(shape = guide_legend(override.aes = list(size = 3))) +
-  theme(legend.title = element_blank(), 
-        legend.text = element_text(size = 18),
-        legend.position=c(0.85,0.95),
-        legend.justification = "center",
-        legend.background = element_rect(fill = "gray99"))
+gcomma <- function(x) format(x, decimal.mark = ",") 
 
+plot_mca <- fviz_gda_var(resultat_mca, group = c(3, 6, 4), 
+                         group_names = c("Interaktionen Web-App", "Personalisierung", "Reflexivität"), 
+                         contrib = "auto", 
+                         group_style = "shape", 
+                         title ="",
+                         textsize = 5.5) +
+  guides(shape = guide_legend(override.aes = list(size = 3))) +
+  theme(text = element_text(size = 14),
+        legend.title = element_blank(), 
+        legend.text = element_text(size = 17),
+        legend.position=c(0.82,0.92),
+        legend.justification = "center",
+        legend.background = element_rect(fill = "gray99"),
+        panel.grid = element_blank(),
+        axis.ticks = element_line(),
+        axis.title = element_text(face = "plain", size = 15),
+        panel.border = element_rect(fill = NA, size = 1))
 # Ergebnisse der HCPC hinzufügen  
 plot_mca_ellipsen <- plot_mca + 
   stat_ellipse(data = koordinaten_ind_ellipsen, aes(Dim.1, Dim.2, group = clust), geom ="polygon", level = 0.8647, type = "norm", alpha = 0.05, colour = "black", linetype = "dashed", segments = 100) +
-  geom_label(data = koordinaten_ind_ellipsen_mittelwert_anzahl, aes(Dim.1, Dim.2, label = paste0("Profil ", clust ,": ", size, "%")), family = "Myriad Pro", size = 5) 
+  geom_label(data = koordinaten_ind_ellipsen_mittelwert_anzahl, aes(Dim.1, Dim.2, label = paste0("Profil ", clust ,": ", gcomma(size), "%"), size = size * 3), family = "Myriad Pro", fontface = "bold") +
+  xlab(paste0("Achse 1 (", gcomma(round(resultat_mca$eig$eigenvalue[1], 3)), "; ", gcomma(round(resultat_mca$eig$`modified rates`[1], 1)) ,"%)")) +
+  ylab(paste0("Achse 2 (", gcomma(round(resultat_mca$eig$eigenvalue[2], 3)), "; ", gcomma(round(resultat_mca$eig$`modified rates`[2], 1)) ,"%)")) +
+  scale_x_continuous(labels = gcomma) +
+  scale_y_continuous(labels = gcomma)
 
 plot_mca_ellipsen
-ggsave("dgfe_mca_ellipsen.pdf", plot_mca_ellipsen, height = 10, width = 10)
+ggsave("dgfe_mca_ellipsen.pdf", plot_mca_ellipsen, height = 8, width = 9)
 
 plot_mca_kontur <- plot_mca + 
   geom_density2d(data = resultat_mca$ind$coord %>% data.frame, aes(Dim.1, Dim.2), alpha = 0.75, colour = "gray") +
   geom_label(data = koordinaten_ind_ellipsen_mittelwert_anzahl, aes(Dim.1, Dim.2, label = paste0("Profil ", clust ,": ", size, "%")), family = "Myriad Pro", size = 5) 
 
 plot_mca_kontur
-ggsave("dgfe_mca_kontur.pdf", plot_mca_kontur, height = 10, width = 10)
+ggsave("dgfe_mca_kontur.pdf", plot_mca_kontur, height = 8, width = 9)
