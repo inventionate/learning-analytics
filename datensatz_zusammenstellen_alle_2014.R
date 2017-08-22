@@ -1,5 +1,5 @@
 # Pakete laden
-pacman::p_load(TimeSpaceAnalysis)
+pacman::p_load_gh("Inventionate/TimeSpaceAnalysis")
 
 # Repository laden
 source("repository.R")
@@ -10,6 +10,7 @@ loadFromLocalRepo(names(asearch("name:benutzer_2014")))
 # Datensatz zusammenstellen
 # Geplante Struktur
 
+# userId
 # Dauer App
 # Besuche App
 # Dauer pro oL
@@ -18,9 +19,11 @@ loadFromLocalRepo(names(asearch("name:benutzer_2014")))
 # Ort der Nutzung
 # Kontinuität der Nutzung
 
-frequently_visit_day <- frequently_visit_hour <- average_visit_duration <- frequently_visit_devices <- frequently_visit_city <- average_visit_events <-visit_event_action_notes <- visit_event_action_videos <- visit_video_event_actions_pause <- visit_video_event_actions_jump <- visit_video_event_actions_cuepoint <- visit_video_event_actions_play <- visit_video_event_actions_speed <- total_visit_duration <- total_visits <- total_actions <- total_events <- NULL
+userId <- frequently_visit_day <- frequently_visit_hour <- average_visit_duration <- frequently_visit_devices <- frequently_visit_city <- average_visit_events <-visit_event_action_notes <- visit_event_action_videos <- visit_video_event_actions_pause <- visit_video_event_actions_jump <- visit_video_event_actions_cuepoint <- visit_video_event_actions_play <- visit_video_event_actions_speed <- total_visit_duration <- total_visits <- total_actions <- total_events <- NULL
 
 for( user in seq_along(benutzer_2014) ) {
+  
+  userId <- c(userId, benutzer_2014[[user]]$userId)
   
   visit_days <- NULL
   for(i in 1:benutzer_2014[[user]]$totalVisits) {
@@ -157,7 +160,9 @@ for( user in seq_along(benutzer_2014) ) {
 }
 
 # Data frame basteln
-datensatz_synthesise_users_2014 <- data_frame(
+datensatz_synthesise_users_2014 <- tibble(
+  
+  userId = userId,
   
   total_visit_duration = total_visit_duration,
   
