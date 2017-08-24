@@ -11,6 +11,10 @@
 pacman::p_load_gh("Inventionate/TimeSpaceAnalysis")
 pacman::p_load("glue")
 
+# Schriftart laden
+showtext::showtext.auto()
+sysfonts::font.add("Myriad Pro", regular = "MyriadPro-Regular.otf", bold = "MyriadPro-Bold.otf", italic = "MyriadPro-It.otf", bolditalic = "MyriadPro-BoldIt.otf")
+
 # Repository laden
 source("repository.R")
 
@@ -207,7 +211,10 @@ fviz_mfa_ind(resultat_mfa, geom = "point", col.ind = "black", font.family = "Myr
     axis.text = element_text(size = 9),
     axis.title = element_text(size = 12)) +
   scale_x_continuous(labels = gcomma) +
-  scale_y_continuous(labels = gcomma)
+  scale_y_continuous(labels = gcomma) +
+  annotate("segment", x = -1.5, y = 2.5, xend = 1.8, yend = -1.5, linetype = "dashed") +
+  annotate("label", x = -1.5, y = 2.5, label = "positive \n Bewertung", family = "Arial", fontface = "bold") +
+  annotate("label", x = 1.8, y = -1.5, label = "negative \n Bewertung", family = "Arial", fontface = "bold")
 ggsave("degeval_mfa_ind.pdf", width = 128, units = "mm")
 
 fviz_cluster(resultat_hcpc, geom = "point", ellipse.type = "norm", ellipse.level = 0.86, show.clust.cent = FALSE,
