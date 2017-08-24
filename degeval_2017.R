@@ -29,8 +29,7 @@ datensatz_learning_analytics <- datensatz_synthesise_users_2014 %>% select(
   notizen_gesamt = visit_event_action_notes,
   pausen_gesamt = visit_video_event_actions_pause,
   faehnchen_gesamt = visit_video_event_actions_cuepoint,
-  spruenge_gesamt = visit_video_event_actions_speed
-)
+  spruenge_gesamt = visit_video_event_actions_speed)
 
 #***********************************************************************
 # Datensatz online-Umfrage ---------------------------------------------
@@ -117,7 +116,8 @@ datensatz_final <- full_join(
   select(-user_id) %>%
   gda_optimise_df %>%
   filter( !(row_number() %in% c(3, 8, 55)) ) %>%
-  data.frame 
+  mutate_at(1, funs(./60)) %>%
+  data.frame
   
 # Imputation
 datensatz_final_imputiert <-imputeMFA(datensatz_final, group = c(6, 8), type = c("s", "n"))
