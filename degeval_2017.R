@@ -200,7 +200,7 @@ fviz_mfa_var(resultat_mfa, choice = "quali.var", repel = TRUE, col.var = "black"
   scale_y_continuous(labels = gcomma)
 ggsave("degeval_mfa_quali.pdf", width = 128, units = "mm")
 
-fviz_mfa_ind(resultat_mfa, geom = "point", col.ind = "black", font.family = "Myriad Pro", title = "",
+fviz_mfa_ind(resultat_mfa, geom = "point", col.ind = "black", font.family = "Myriad Pro", title = "", axes.linetype = "solid",
              xlab = glue("Achse 1 ({gcomma(round(resultat_mfa$eig$`percentage of variance`[1], 1))}%)"),
              ylab = glue("Achse 2 ({gcomma(round(resultat_mfa$eig$`percentage of variance`[2], 1))}%)")) + 
   coord_fixed() + 
@@ -210,11 +210,14 @@ fviz_mfa_ind(resultat_mfa, geom = "point", col.ind = "black", font.family = "Myr
     panel.grid.minor = element_blank(),
     axis.text = element_text(size = 9),
     axis.title = element_text(size = 12)) +
+  annotate("segment", x = -1.75, y = 1.75, xend = 1.75, yend = -1.75, linetype = "dashed") +
+  annotate("segment", x = -1.75, y = -1.75, xend = 1.75, yend = 1.75, linetype = "dashed") +
+  annotate("label", x = -1.5, y = 1.75, label = "positive \n Bewertung", family = "Myriad Pro", fontface = "bold") +
+  annotate("label", x = 1.6, y = -1.75, label = "negative \n Bewertung", family = "Myriad Pro", fontface = "bold") +
+  annotate("label", x = -1.5, y = -1.75, label = "schwache \n Nutzung", family = "Myriad Pro", fontface = "bold") +
+  annotate("label", x = 1.6, y = 1.75, label = "starke \n Nutzung", family = "Myriad Pro", fontface = "bold") +
   scale_x_continuous(labels = gcomma) +
-  scale_y_continuous(labels = gcomma) +
-  annotate("segment", x = -1.5, y = 2.5, xend = 1.8, yend = -1.5, linetype = "dashed") +
-  annotate("label", x = -1.5, y = 2.5, label = "positive \n Bewertung", family = "Arial", fontface = "bold") +
-  annotate("label", x = 1.8, y = -1.5, label = "negative \n Bewertung", family = "Arial", fontface = "bold")
+  scale_y_continuous(labels = gcomma)
 ggsave("degeval_mfa_ind.pdf", width = 128, units = "mm")
 
 fviz_cluster(resultat_hcpc, geom = "point", ellipse.type = "norm", ellipse.level = 0.86, show.clust.cent = FALSE,
@@ -230,8 +233,14 @@ fviz_cluster(resultat_hcpc, geom = "point", ellipse.type = "norm", ellipse.level
     panel.grid.minor = element_blank(),
     axis.text = element_text(size = 9),
     axis.title = element_text(size = 12)) +
+  annotate("segment", x = -1.6, y = 1.6, xend = 1.5, yend = -1.5, linetype = "dashed", alpha = 0.3) +
+  annotate("segment", x = -1.5, y = -1.5, xend = 1.5, yend = 1.5, linetype = "dashed", alpha = 0.3) +
+  annotate("label", x = -1.5, y = 1.75, label = "positive \n Bewertung", family = "Myriad Pro", alpha = 0.3) +
+  annotate("label", x = 1.6, y = -1.75, label = "negative \n Bewertung", family = "Myriad Pro", alpha = 0.3) +
+  annotate("label", x = -1.5, y = -1.75, label = "schwache \n Nutzung", family = "Myriad Pro", alpha = 0.3) +
+  annotate("label", x = 1.6, y = 1.75, label = "starke \n Nutzung", family = "Myriad Pro", alpha = 0.3) +
   # Die Gruppengewichte der Clusterprofile hinzufügen
-  geom_label(data = datensatz_cluster, aes(Dim.1, Dim.2, label = glue("Profil {cluster}: {gcomma(round(prop, 1))}%"), size = n), family = "Myriad Pro") +
+  geom_label(data = datensatz_cluster, aes(Dim.1, Dim.2, label = glue("Profil {cluster}: {gcomma(round(prop, 1))}%"), size = n), family = "Myriad Pro", fontface = "bold") +
   scale_size(range = c(4,5)) +
   scale_x_continuous(labels = gcomma) +
   scale_y_continuous(labels = gcomma)
