@@ -172,9 +172,10 @@ describe(resultat_hcpc$data.clust$clust)
 gcomma <- function(x) format(x, decimal.mark = ",") 
 
 fviz_mfa_var(resultat_mfa, choice = "quanti.var", repel = TRUE, col.var = "black", col.circle = "black", 
-             axes.linetype = "solid", font.family = "Myriad Pro", title = "", labelsize = 3,
+             axes.linetype = "blank", font.family = "Myriad Pro", title = "", labelsize = 3,
              xlab = glue("Achse 1 ({gcomma(round(resultat_mfa$eig$`percentage of variance`[1], 1))}%)"),
              ylab = glue("Achse 2 ({gcomma(round(resultat_mfa$eig$`percentage of variance`[2], 1))}%)")) +
+  geom_hline(yintercept = 0, colour = "gray70") + geom_vline(xintercept = 0, colour = "gray70") +
   theme(
     panel.border = element_rect(fill = "transparent", colour = "gray70", size = 1, linetype = "solid"), 
     panel.grid.major = element_blank(), 
@@ -185,11 +186,11 @@ fviz_mfa_var(resultat_mfa, choice = "quanti.var", repel = TRUE, col.var = "black
   scale_y_continuous(labels = gcomma)
 ggsave("degeval_mfa_quanti.pdf", width = 128, height = 128, units = "mm")
 
-fviz_mfa_var(resultat_mfa, choice = "quali.var", repel = TRUE, col.var = "black", axes.linetype = "solid", 
+fviz_mfa_var(resultat_mfa, choice = "quali.var", repel = TRUE, col.var = "black", axes.linetype = "blank", 
              font.family = "Myriad Pro", title = "", labelsize = 3,
              xlab = glue("Achse 1 ({gcomma(round(resultat_mfa$eig$`percentage of variance`[1], 1))}%)"),
              ylab = glue("Achse 2 ({gcomma(round(resultat_mfa$eig$`percentage of variance`[2], 1))}%)")) + 
-  coord_fixed() +
+  coord_fixed() + geom_hline(yintercept = 0, colour = "gray70") + geom_vline(xintercept = 0, colour = "gray70") +
   theme(
     panel.border = element_rect(fill = "transparent", colour = "gray70", size = 1, linetype = "solid"), 
     panel.grid.major = element_blank(), 
@@ -200,10 +201,10 @@ fviz_mfa_var(resultat_mfa, choice = "quali.var", repel = TRUE, col.var = "black"
   scale_y_continuous(labels = gcomma)
 ggsave("degeval_mfa_quali.pdf", width = 128, height = 128, units = "mm")
 
-fviz_mfa_ind(resultat_mfa, geom = "point", col.ind = "black", font.family = "Myriad Pro", title = "", axes.linetype = "solid",
+fviz_mfa_ind(resultat_mfa, geom = "point", col.ind = "black", font.family = "Myriad Pro", title = "", axes.linetype = "blank",
              xlab = glue("Achse 1 ({gcomma(round(resultat_mfa$eig$`percentage of variance`[1], 1))}%)"),
              ylab = glue("Achse 2 ({gcomma(round(resultat_mfa$eig$`percentage of variance`[2], 1))}%)")) + 
-  coord_fixed() + 
+  coord_fixed() + geom_hline(yintercept = 0, colour = "gray70") + geom_vline(xintercept = 0, colour = "gray70") +
   theme(
     panel.border = element_rect(fill = "transparent", colour = "gray70", size = 1, linetype = "solid"), 
     panel.grid.major = element_blank(), 
@@ -224,7 +225,11 @@ fviz_cluster(resultat_hcpc, geom = "point", ellipse.type = "norm", ellipse.level
              palette = c("gray10", "gray70", "gray40"), font.family = "Myriad Pro", main = "",
              xlab = glue("Achse 1 ({gcomma(round(resultat_mfa$eig$`percentage of variance`[1], 1))}%)"),
              ylab = glue("Achse 2 ({gcomma(round(resultat_mfa$eig$`percentage of variance`[2], 1))}%)")) +
+<<<<<<< HEAD
              geom_hline(yintercept = 0, colour = "gray70") + geom_vline(xintercept = 0, colour = "gray70") + coord_fixed() +
+=======
+             coord_fixed() + geom_hline(yintercept = 0, colour = "gray70") + geom_vline(xintercept = 0, colour = "gray70") +
+>>>>>>> 5a84dcc4362e76fa286ecbc2ba373595d79a9cc5
   theme(
     legend.position = "none", 
     panel.background = element_blank(),
