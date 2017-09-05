@@ -176,14 +176,14 @@ fviz_mfa_var(resultat_mfa, choice = "quanti.var", repel = TRUE, col.var = "black
              xlab = glue("Achse 1 ({gcomma(round(resultat_mfa$eig$`percentage of variance`[1], 1))}%)"),
              ylab = glue("Achse 2 ({gcomma(round(resultat_mfa$eig$`percentage of variance`[2], 1))}%)")) +
   theme(
-    panel.border = element_rect(fill = "transparent", colour = "black", size = 1, linetype = "solid"), 
+    panel.border = element_rect(fill = "transparent", colour = "gray70", size = 1, linetype = "solid"), 
     panel.grid.major = element_blank(), 
     panel.grid.minor = element_blank(),
     axis.text = element_text(size = 9),
     axis.title = element_text(size = 12)) +
   scale_x_continuous(labels = gcomma) +
   scale_y_continuous(labels = gcomma)
-ggsave("degeval_mfa_quanti.pdf", width = 128, units = "mm")
+ggsave("degeval_mfa_quanti.pdf", width = 128, height = 128, units = "mm")
 
 fviz_mfa_var(resultat_mfa, choice = "quali.var", repel = TRUE, col.var = "black", axes.linetype = "solid", 
              font.family = "Myriad Pro", title = "", labelsize = 3,
@@ -191,21 +191,21 @@ fviz_mfa_var(resultat_mfa, choice = "quali.var", repel = TRUE, col.var = "black"
              ylab = glue("Achse 2 ({gcomma(round(resultat_mfa$eig$`percentage of variance`[2], 1))}%)")) + 
   coord_fixed() +
   theme(
-    panel.border = element_rect(fill = "transparent", colour = "black", size = 1, linetype = "solid"), 
+    panel.border = element_rect(fill = "transparent", colour = "gray70", size = 1, linetype = "solid"), 
     panel.grid.major = element_blank(), 
     panel.grid.minor = element_blank(),
     axis.text = element_text(size = 9),
     axis.title = element_text(size = 12)) +
   scale_x_continuous(labels = gcomma) +
   scale_y_continuous(labels = gcomma)
-ggsave("degeval_mfa_quali.pdf", width = 128, units = "mm")
+ggsave("degeval_mfa_quali.pdf", width = 128, height = 128, units = "mm")
 
 fviz_mfa_ind(resultat_mfa, geom = "point", col.ind = "black", font.family = "Myriad Pro", title = "", axes.linetype = "solid",
              xlab = glue("Achse 1 ({gcomma(round(resultat_mfa$eig$`percentage of variance`[1], 1))}%)"),
              ylab = glue("Achse 2 ({gcomma(round(resultat_mfa$eig$`percentage of variance`[2], 1))}%)")) + 
   coord_fixed() + 
   theme(
-    panel.border = element_rect(fill = "transparent", colour = "black", size = 1, linetype = "solid"), 
+    panel.border = element_rect(fill = "transparent", colour = "gray70", size = 1, linetype = "solid"), 
     panel.grid.major = element_blank(), 
     panel.grid.minor = element_blank(),
     axis.text = element_text(size = 9),
@@ -218,17 +218,17 @@ fviz_mfa_ind(resultat_mfa, geom = "point", col.ind = "black", font.family = "Myr
   annotate("label", x = 1.6, y = 1.75, label = "starke \n Nutzung", family = "Myriad Pro", fontface = "bold") +
   scale_x_continuous(labels = gcomma) +
   scale_y_continuous(labels = gcomma)
-ggsave("degeval_mfa_ind.pdf", width = 128, units = "mm")
+ggsave("degeval_mfa_ind.pdf", width = 128, height = 128, units = "mm")
 
 fviz_cluster(resultat_hcpc, geom = "point", ellipse.type = "norm", ellipse.level = 0.86, show.clust.cent = FALSE,
              palette = c("gray10", "gray70", "gray40"), font.family = "Myriad Pro", main = "",
              xlab = glue("Achse 1 ({gcomma(round(resultat_mfa$eig$`percentage of variance`[1], 1))}%)"),
              ylab = glue("Achse 2 ({gcomma(round(resultat_mfa$eig$`percentage of variance`[2], 1))}%)")) +
-             geom_hline(yintercept = 0) + geom_vline(xintercept = 0) + coord_fixed() +
+             geom_hline(yintercept = 0, colour = "gray70") + geom_vline(xintercept = 0, colour = "gray70") + coord_fixed() +
   theme(
     legend.position = "none", 
     panel.background = element_blank(),
-    panel.border = element_rect(fill = "transparent", colour = "black", size = 1, linetype = "solid"), 
+    panel.border = element_rect(fill = "transparent", colour = "gray70", size = 1, linetype = "solid"), 
     panel.grid.major = element_blank(), 
     panel.grid.minor = element_blank(),
     axis.text = element_text(size = 9),
@@ -244,4 +244,4 @@ fviz_cluster(resultat_hcpc, geom = "point", ellipse.type = "norm", ellipse.level
   scale_size(range = c(4,5)) +
   scale_x_continuous(labels = gcomma) +
   scale_y_continuous(labels = gcomma)
-ggsave("degeval_mfa_cluster.pdf", width = 128, units = "mm")
+ggsave("degeval_mfa_cluster.pdf", width = 128, height = 128, units = "mm")
